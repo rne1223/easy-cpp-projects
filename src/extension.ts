@@ -21,20 +21,20 @@ const customTemplatesFolder = (() => {
         try {
             mkdirSync(dir);
             writeFileSync(`${dir}/files.json`, `{
-    "templates": {
-        "Example Custom Template": {
-            "directories": [
-                "ExampleDirectory"
-            ],
-            "blankFiles": [
-                "HelloWorld.txt"
-            ],
-            "openFiles": [
-                "HelloWorld.txt"
-            ]
-        }
-    }
-}`);
+                "templates": {
+                    "Example Custom Template": {
+                        "directories": [
+                            "ExampleDirectory"
+                        ],
+                        "blankFiles": [
+                            "HelloWorld.txt"
+                        ],
+                        "openFiles": [
+                            "HelloWorld.txt"
+                        ]
+                    }
+                }
+            }`);
         } catch (err) {
             console.error(err);
         }
@@ -176,6 +176,7 @@ const createProject = async (local?: boolean) => {
             data = await res.json();
         }
 
+        // Read templates from json file
         for (let tname in data.templates) { templates.push(tname); }
         templates.push("Custom templates");
 
